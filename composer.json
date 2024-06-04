@@ -23,7 +23,7 @@
     },
     "require": {
         "php": ">=8.2",
-        "aws/aws-sdk-php": "^3.309",
+        "aws/aws-sdk-php": "^3.189.0",
         "league/flysystem": "~3",
         "illuminate/container": "~9|~10|~11",
         "illuminate/contracts": "~9|~10|~11",
