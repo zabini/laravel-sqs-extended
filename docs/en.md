@@ -2,19 +2,19 @@
 
 ## Introduction
 
-Laravel SQS Extended is a Laravel queue driver that was designed to work around the AWS SQS 256KB payload size limits.  This queue driver will automatically serialize large payloads to a disk (typically S3) and then unserialize them at run time.  This package took inspiration from https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-s3-messages.html.
+Laravel SQS Extended is a Laravel queue driver that was designed to work around the AWS SQS 256KB payload size limits. This queue driver will automatically serialize large payloads to a disk (typically S3) and then unserialize them at run time. This package took inspiration from https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-s3-messages.html.
 
 ## Install
 
 1. First create a bucket that will hold all of your large SQS payloads.
 
-> We highly recommend you use a _private_ bucket when storing SQS payloads.  Payloads can contain sensitive information and should never be shared publicly.
+> We highly recommend you use a _private_ bucket when storing SQS payloads. Payloads can contain sensitive information and should never be shared publicly.
 
 2. Run `composer require defectivecode/laravel-sqs-extended` to install the queue driver.
 
 3. Then, add the following default queue settings to your `queue.php` file.
 
-> Laravel Vapor users must set the connection name set to `sqs`.  The `sqs` connection is looked for within Vapor Core and this library will not work as expected if you use a different connection name.
+> Laravel Vapor users must set the connection name set to `sqs`. The `sqs` connection is looked for within Vapor Core and this library will not work as expected if you use a different connection name.
 
 ```
   /*
