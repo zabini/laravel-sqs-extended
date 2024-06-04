@@ -6,24 +6,24 @@
 </p>
 
 <p align="center">
-    <a href="https://packagist.org/packages/defectivecode/skeleton">
-        <img src="https://poser.pugx.org/defectivecode/skeleton/d/total.svg" alt="Total Downloads">
+    <a href="https://packagist.org/packages/defectivecode/laravel-sqs-extended">
+        <img src="https://poser.pugx.org/defectivecode/laravel-sqs-extended/d/total.svg" alt="Total Downloads">
     </a>
-    <a href="https://packagist.org/packages/defectivecode/skeleton">
-        <img src="https://poser.pugx.org/defectivecode/skeleton/v/stable.svg" alt="Latest Stable Version">
+    <a href="https://packagist.org/packages/defectivecode/laravel-sqs-extended">
+        <img src="https://poser.pugx.org/defectivecode/laravel-sqs-extended/v/stable.svg" alt="Latest Stable Version">
     </a>
-    <a href="https://packagist.org/packages/defectivecode/skeleton">
-        <img src="https://poser.pugx.org/defectivecode/skeleton/license.svg" alt="License">
+    <a href="https://packagist.org/packages/defectivecode/laravel-sqs-extended">
+        <img src="https://poser.pugx.org/defectivecode/laravel-sqs-extended/license.svg" alt="License">
     </a>
 </p>
 
 # Introduction
 
-...
+Laravel SQS extended is a Laravel queue driver that was designed to work around the AWS SQS 256KB payload size limits. This queue driver will automatically serialize large payloads to a disk (typically S3) and then unserialize them at run time.
 
 # Documentation
 
-You may read the [documentation on our website](https://www.defectivecode.com/packages/skelton).
+You may read the [documentation on our website](https://www.defectivecode.com/packages/laravel-sqs-extended).
 
 # Support Guidelines
 
