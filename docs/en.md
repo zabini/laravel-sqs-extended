@@ -4,6 +4,13 @@
 
 Laravel SQS Extended is a Laravel queue driver that was designed to work around the AWS SQS 256KB payload size limits. This queue driver will automatically serialize large payloads to a disk (typically S3) and then unserialize them at run time. This package took inspiration from https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-s3-messages.html.
 
+## Migration from Simple SQS Extended Client
+
+1. Remove `simplesoftwareio/simple-sqs-extended-client` package from your project.
+2. Install `defectivecode/laravel-sqs-extended` package.
+
+The old configuration is backwards compatible with the new package. The only change is the package name.
+
 ## Install
 
 1. First create a bucket that will hold all of your large SQS payloads.
