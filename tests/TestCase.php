@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace DefectiveCode\Skeleton\Tests;
+namespace DefectiveCode\LaravelSqsExtended\Tests;
 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Http;

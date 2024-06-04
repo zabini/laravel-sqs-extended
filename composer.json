@@ -1,15 +1,15 @@
 {
-    "name": "defectivecode/skeleton",
+    "name": "defectivecode/laravel-sqs-extended",
     "type": "laravel",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "DefectiveCode\\Skeleton\\": "src"
+            "DefectiveCode\\LaravelSqsExtended\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "DefectiveCode\\Skeleton\\Tests\\": "tests"
+            "DefectiveCode\\LaravelSqsExtended\\Tests\\": "tests"
         }
     },
     "authors": [
@@ -18,14 +18,32 @@
             "email": "corey@defectivecode.com"
         }
     ],
+    "suggest": {
+        "laravel/vapor-core": "Allows SQS disk based storage while using Laravel Vapor."
+    },
     "require": {
-        "php": ">=8.2"
+        "php": ">=8.2",
+        "aws/aws-sdk-php": "^3.309",
+        "league/flysystem": "~3",
+        "illuminate/container": "~9|~10|~11",
+        "illuminate/contracts": "~9|~10|~11",
+        "illuminate/filesystem": "~9|~10|~11",
+        "illuminate/queue": "~9|~10|~11",
+        "illuminate/support": "~9|~10|~11"
     },
     "require-dev": {
         "orchestra/testbench": "^8.3",
         "nunomaduro/collision": "^7.0",
         "phpunit/phpunit": "^10.0",
-        "laravel/pint": "^1.8"
+        "laravel/pint": "^1.8",
+        "mockery/mockery": "^1.6"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "DefectiveCode\\LaravelSqsExtended\\SqsDiskServiceProvider"
+            ]
+        }
     },
     "scripts": {
         "post-autoload-dump": [
