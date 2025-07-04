@@ -78,7 +78,7 @@ trait SqsDiskBaseJob
         }
 
         if ($pointer = $this->resolvePointer()) {
-            return $this->cachedRawBody = $this->resolveDisk()->get($pointer);
+            return $this->cachedRawBody = $this->resolveDisk()->get($pointer) ?? '';
         }
 
         return parent::getRawBody();
