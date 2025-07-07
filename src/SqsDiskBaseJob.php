@@ -82,7 +82,7 @@ trait SqsDiskBaseJob
             return $this->cachedRawBody = retry(Arr::get($this->diskOptions, 'retry.times', 5), function () use ($pointer) {
                 $result = $this->resolveDisk()->get($pointer);
                 if (empty($result)) {
-                    throw new Exception('Unable to read file content');
+                    throw new Exception(sprintf('Unable to read content of file: [%s]', $pointer));
                 }
                 return $result;
             }, Arr::get($this->diskOptions, 'retry.sleep_milliseconds', 1000));
