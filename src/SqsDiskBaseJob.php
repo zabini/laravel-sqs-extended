@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace DefectiveCode\LaravelSqsExtended;
 
 use Aws\Sqs\SqsClient;
+use Exception;
 use Illuminate\Support\Arr;
 use Illuminate\Container\Container;
 
@@ -78,7 +79,13 @@ trait SqsDiskBaseJob
         }
 
         if ($pointer = $this->resolvePointer()) {
-            return $this->cachedRawBody = $this->resolveDisk()->get($pointer);
+            return $this->cachedRawBody = retry(Arr::get($this->diskOptions, 'retry.times', 5), function () use ($pointer) {
+                $result = $this->resolveDisk()->get($pointer);
+                if (empty($result)) {
+                    throw new Exception('Unable to read file content');
+                }
+                return $result;
+            }, Arr::get($this->diskOptions, 'retry.sleep_milliseconds', 1000));
         }
 
         return parent::getRawBody();
