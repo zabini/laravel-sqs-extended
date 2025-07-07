@@ -67,8 +67,19 @@ class SqsDiskQueue extends SqsQueue
 
         if (strlen($payload) >= self::MAX_SQS_LENGTH || Arr::get($this->diskOptions, 'always_store')) {
             $uuid = json_decode($payload)->uuid;
-            $filepath = Arr::get($this->diskOptions, 'prefix', '')."/{$uuid}.json";
+            $filepath = Arr::get($this->diskOptions, 'prefix', '') . "/{$uuid}.json";
             $this->resolveDisk()->put($filepath, $payload);
+
+            retry(
+                Arr::get($this->diskOptions, 'retry.times', 10),
+                function () use ($filepath) {
+
+                    if (! $this->resolveDisk()->exists($filepath)) {
+                        throw new \Exception("S3 propagation delay: arquivo ainda não disponível após upload: {$filepath}");
+                    }
+                },
+                Arr::get($this->diskOptions, 'retry.sleep_milliseconds', 2000)
+            );
 
             $message['MessageBody'] = json_encode(['pointer' => $filepath]);
         }
